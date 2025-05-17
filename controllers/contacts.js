@@ -43,10 +43,11 @@ const updateContact = async (req, res) => {
     //#swagger.tags=[Contacts]
     const contactId = new ObjectId(req.params.id);
     const contact = {
-        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
-        name: req.body.name,
-        ipaddress: req.body.ipaddress,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
     };
     const response = await mongodb.getDatabase().db().collection('contacts').replaceOne({ _id: contactId}, contact);
     if (response.modifiedCount > 0) {
